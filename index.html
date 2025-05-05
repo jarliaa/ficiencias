@@ -1,61 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Escolha 4 Imagens</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    input[type="file"] {
-      display: block;
-      margin: 20px auto;
-    }
-    .preview {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .preview img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Votação de Imagens</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <h1>Escolha até 4 Imagens</h1>
-  <input type="file" id="imageInput" accept="image/*" multiple>
-  <div class="preview" id="imagePreview"></div>
-
-  <script>
-    const imageInput = document.getElementById('imageInput');
-    const imagePreview = document.getElementById('imagePreview');
-
-    imageInput.addEventListener('change', () => {
-      imagePreview.innerHTML = '';
-      const files = Array.from(imageInput.files).slice(0, 4); // Limita a 4 imagens
-
-      files.forEach(file => {
-        const reader = new FileReader();
-        reader.onload = e => {
-          const img = document.createElement('img');
-          img.src = e.target.result;
-          imagePreview.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-      });
-    });
-  </script>
-
+    <h1>Vote na sua imagem favorita!</h1>
+    <div class="gallery">
+        <div class="image-option" onclick="vote(0)">
+            <img src="img1.jpg" alt="Imagem 1">
+            <p id="votes-0">Votos: 0</p>
+        </div>
+        <div class="image-option" onclick="vote(1)">
+            <img src="img2.jpg" alt="Imagem 2">
+            <p id="votes-1">Votos: 0</p>
+        </div>
+        <div class="image-option" onclick="vote(2)">
+            <img src="img3.jpg" alt="Imagem 3">
+            <p id="votes-2">Votos: 0</p>
+        </div>
+        <div class="image-option" onclick="vote(3)">
+            <img src="img4.jpg" alt="Imagem 4">
+            <p id="votes-3">Votos: 0</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
